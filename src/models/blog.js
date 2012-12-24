@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var marked = require('marked');
 
-var BlogSchema = module.exports = new Schema(
+var BlogSchema = new Schema(
   {
     title: String,
     article: String,
@@ -19,3 +19,6 @@ BlogSchema.methods.formatDate = function() {
 BlogSchema.methods.formatMarkdown = function() {
   return marked( this.article );
 }
+
+var Blog = module.exports = mongoose.model('Blog', BlogSchema, 'Blogs');
+
